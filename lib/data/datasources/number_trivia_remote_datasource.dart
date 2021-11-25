@@ -1,6 +1,6 @@
 import 'package:clean_architecture/data/models/number_trivia_model.dart';
 
-abstract class NumberTriviaRemoteDataSource {
+abstract class RemoteDataSource {
   /// Calls the http://numbersapi.com/{number} endpoint.
   ///
   /// Throws a [ServerException] for all error codes.
