@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 class GetRandomNumberTrivia extends UseCase<NumberTrivia, NoParams> {
+  //todo? add type?
   final repository;
 
   GetRandomNumberTrivia(this.repository);
