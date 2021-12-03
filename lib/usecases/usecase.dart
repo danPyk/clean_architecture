@@ -1,6 +1,6 @@
 // Parameters have to be put into a container object so that they can be
 // included in this abstract base class method definition.
-import 'package:clean_architecture/core/errors/failures.dart';
+import 'package:clean_architecture/errors/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 

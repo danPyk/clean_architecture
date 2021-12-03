@@ -4,11 +4,11 @@
 
 import 'dart:async' as _i4;
 
-import 'package:clean_architecture/core/errors/failures.dart' as _i5;
-import 'package:clean_architecture/core/usecases/usecase.dart' as _i7;
 import 'package:clean_architecture/domain/entities/number_trivia.dart' as _i6;
 import 'package:clean_architecture/domain/usecases/get_random_number_trivia.dart'
     as _i3;
+import 'package:clean_architecture/errors/failures.dart' as _i5;
+import 'package:clean_architecture/usecases/usecase.dart' as _i7;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 

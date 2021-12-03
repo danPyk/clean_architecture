@@ -8,6 +8,7 @@ import 'package:mockito/mockito.dart';
 
 import 'get_concrete_number_trivia_test.mocks.dart';
 
+
 @GenerateMocks([NumberTriviaRepository])
 void main() {
   // initialization outside of setUp

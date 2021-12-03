@@ -1,5 +1,5 @@
-import 'package:clean_architecture/core/errors/failures.dart';
-import 'package:clean_architecture/core/usecases/usecase.dart';
+import 'package:clean_architecture/errors/failures.dart';
+import 'package:clean_architecture/usecases/usecase.dart';
 import 'package:clean_architecture/domain/entities/number_trivia.dart';
 import 'package:clean_architecture/domain/repositories/number_trivia_repository.dart';
 import 'package:dartz/dartz.dart';
