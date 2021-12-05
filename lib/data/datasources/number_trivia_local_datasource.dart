@@ -33,7 +33,10 @@ class LocalDataSourceImpl implements LocalDataSource {
   }
 
   @override
-  Future<void> cacheNumberTrivia(NumberTriviaModel triviaCache) async {
-    sharedPreferences.setString(cachedNumberTrivia, json.encode(triviaCache.toJson()));
+  Future<void> cacheNumberTrivia(NumberTriviaModel triviaToCache)  {
+     return sharedPreferences.setString(
+      cachedNumberTrivia,
+      json.encode(triviaToCache.toJson()),
+    );
   }
 }

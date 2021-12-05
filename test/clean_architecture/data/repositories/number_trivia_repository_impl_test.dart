@@ -255,7 +255,6 @@ void main() {
           //act
           final result = await repository.getRandomNumberTrivia();
           //assert
-          //todo why below comment fail? like networkInfo.isConnected
           verifyZeroInteractions(mockRemoteDataSource);
           verify(mockLocalDataSource.getLastNumberTrivia());
           expect(result, equals(Left(CacheFailure())));
