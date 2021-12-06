@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 const cachedNumberTrivia = 'CACHED_NUMBER_TRIVIA';
 
-abstract class LocalDataSource {
+abstract class NumberTriviaLocalDataSource {
   /// Gets the cached [NumberTriviaModel] which was gotten the last time
   /// the user had an internet connection.
   ///
@@ -16,7 +16,7 @@ abstract class LocalDataSource {
   Future<void> cacheNumberTrivia(NumberTriviaModel triviaCache);
 }
 
-class LocalDataSourceImpl implements LocalDataSource {
+class LocalDataSourceImpl implements NumberTriviaLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   LocalDataSourceImpl({required this.sharedPreferences});

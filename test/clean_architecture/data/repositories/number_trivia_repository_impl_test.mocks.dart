@@ -24,11 +24,12 @@ import 'package:mockito/mockito.dart' as _i1;
 class _FakeNumberTriviaModel_0 extends _i1.Fake
     implements _i2.NumberTriviaModel {}
 
-/// A class which mocks [RemoteDataSource].
+/// A class which mocks [NumberTriviaRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRemoteDataSource extends _i1.Mock implements _i3.RemoteDataSource {
-  MockRemoteDataSource() {
+class MockNumberTriviaRemoteDataSource extends _i1.Mock
+    implements _i3.NumberTriviaRemoteDataSource {
+  MockNumberTriviaRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
@@ -48,11 +49,12 @@ class MockRemoteDataSource extends _i1.Mock implements _i3.RemoteDataSource {
   String toString() => super.toString();
 }
 
-/// A class which mocks [LocalDataSource].
+/// A class which mocks [NumberTriviaLocalDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLocalDataSource extends _i1.Mock implements _i5.LocalDataSource {
-  MockLocalDataSource() {
+class MockNumberTriviaLocalDataSource extends _i1.Mock
+    implements _i5.NumberTriviaLocalDataSource {
+  MockNumberTriviaLocalDataSource() {
     _i1.throwOnMissingStub(this);
   }
 

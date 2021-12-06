@@ -9,8 +9,8 @@ import 'package:clean_architecture/domain/repositories/number_trivia_repository.
 import 'package:dartz/dartz.dart';
 
 class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
-  final RemoteDataSource remoteDataSource;
-  final LocalDataSource localDataSource;
+  final NumberTriviaRemoteDataSource remoteDataSource;
+  final NumberTriviaLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 
   NumberTriviaRepositoryImpl({

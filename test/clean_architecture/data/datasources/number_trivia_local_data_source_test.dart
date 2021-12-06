@@ -22,41 +22,11 @@ void main() {
     localDataSourceImpl =
         LocalDataSourceImpl(sharedPreferences: mockSharedPreferences);
   });
-  group('getLastNumber', () {
-    final tNumberTriviaModel =
-        NumberTriviaModel.fromJson(json.decode(fixture('trivia_cached.json')));
 
-    test(
-      'getLastNumber should return NumberTriviaModel from SharedPreferences, when there is one in cache ',
-      () async {
-        //because we save SHaredPreferences as string
-        when(mockSharedPreferences.getString(any))
-            .thenReturn(fixture('trivia_cached.json'));
-
-        final result = await localDataSourceImpl.getLastNumberTrivia();
-
-        verify(mockSharedPreferences.getString(cachedNumberTrivia));
-        expect(result, equals(tNumberTriviaModel));
-      },
-    );
-    test(
-      'getLastNumber should throw CacheException when there is not a cached value',
-      () async {
-        //empty SharedPreferences return null
-        when(mockSharedPreferences.getString(any)).thenReturn(null);
-
-        final call = localDataSourceImpl.getLastNumberTrivia;
-
-        expect(() => call(), throwsA(isA<CacheException>()));
-      },
-    );
-  });
 
   group('cacheNumberTrivia', () {
     const tNumberTriviaModel =
         NumberTriviaModel(number: 1, text: 'test trivia');
-
-    var mock = MockCustomSharedPreferences();
 
     test(
       'should call SharedPreferences to cache the data',
