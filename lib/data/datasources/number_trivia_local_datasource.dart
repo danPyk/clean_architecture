@@ -16,10 +16,10 @@ abstract class NumberTriviaLocalDataSource {
   Future<void> cacheNumberTrivia(NumberTriviaModel triviaCache);
 }
 
-class LocalDataSourceImpl implements NumberTriviaLocalDataSource {
+class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
   final SharedPreferences sharedPreferences;
 
-  LocalDataSourceImpl({required this.sharedPreferences});
+  NumberTriviaLocalDataSourceImpl({required this.sharedPreferences});
 
   @override
   Future<NumberTriviaModel> getLastNumberTrivia() {
