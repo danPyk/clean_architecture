@@ -5,10 +5,7 @@ abstract class NumberTriviaState extends Equatable {
   @override
   List<Object> get props => [];
 
-
 }
-
-class NumberTriviaInitial extends NumberTriviaState {}
 
 class Empty extends NumberTriviaState {}
 

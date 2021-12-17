@@ -21,13 +21,12 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
   final GetRandomNumberTrivia getRandomNumberTrivia;
   final InputConverter inputConverter;
 
-  NumberTriviaState get initialSTate => Empty();
-
   NumberTriviaBloc(
       {required this.getConcreteNumberTrivia,
       required this.getRandomNumberTrivia,
       required this.inputConverter})
       : super(Empty()) {
+
     on<GetTriviaForConcreteNumber>(
       (event, emit) async {
         final inputEither =
@@ -36,41 +35,31 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
         inputEither.fold((l) => emit(Error(message: "Invalid input")),
             (r) async {
           emit(Loading());
+          final failureOrTrivia = await getConcreteNumberTrivia(Params(r));
+          //todo message
+          failureOrTrivia.fold((l) => emit(Error(message: 'problem message')),
+              (r) => emit(Loaded(trivia: r)));
+        });
+      },
+    );
+
+    on<GetTriviaForRandomNumber>(
+      (event, emit) async {
+        emit(Loading());
+        final failureOrTrivia = await getRandomNumberTrivia(NoParams());
+
+        failureOrTrivia.fold((l) => emit(Error(message: "Invalid input")),
+            (r) async {
+          emit(Loading());
           final failureOrTrivia =
               await getConcreteNumberTrivia(const Params(1));
           //todo message
-          failureOrTrivia.fold((l) =>  emit(Error(message: 'problem message'))
-              , (r) =>  emit(Loaded(trivia:  r)));
+          failureOrTrivia.fold(
+              (l) => emit(Error(message: 'problem message')),
+              (r) => emit(
+                  Loaded(trivia: const NumberTrivia(text: 'txt', number: 1))));
         });
-
-        if (inputEither.isLeft()) {
-          emit(Error(message: "Invalid input"));
-        } else {
-          emit(Loading());
-          final failureOrTrivia = await getConcreteNumberTrivia(const Params(
-              1)); //continue with the process of fetching your data here
-          if (failureOrTrivia.isRight()) {
-            //todo
-            emit(Loaded(trivia: const NumberTrivia(text: 'txt', number: 1)));
-          } else {
-            //should emit Loaded
-            //todo shuould return different errors
-            emit(Error(message: serverFailureMessage));
-          }
-        }
       },
     );
-    on<GetTriviaForRandomNumber>((event, emit) async {
-      emit(Loading());
-      final failureOrTrivia = await getRandomNumberTrivia(
-          NoParams()); //continue with the process of fetching your data here
-      if (failureOrTrivia.isRight()) {
-        emit(Loaded(trivia: const NumberTrivia(text: 'txt', number: 1)));
-      } else {
-        //should emit Loaded
-        //todo shuould return different errors
-        emit(Error(message: serverFailureMessage));
-      }
-    });
   }
 }

@@ -32,7 +32,7 @@ void main() {
   test(
     'initialState should be empty',
     () async {
-      expect(bloc.initialSTate, equals(Empty()));
+      expect(bloc.state, equals(Empty()));
     },
   );
   group('GetTriviaForConcreteNumber', () {
@@ -49,9 +49,9 @@ void main() {
         when(mockInputConverter.stringToUnsignedInteger(any))
             .thenReturn(const Right(tNumberParsed));
         //act
-        bloc.add(GetTriviaForConcreteNumber(tNumberString));
+        when(bloc.add(GetTriviaForConcreteNumber(tNumberString))).thenReturn(Right(true));
         await untilCalled(
-            mockInputConverter.stringToUnsignedInteger(tNumberString));
+            mockInputConverter.stringToUnsignedInteger(any));
         //assert
         verify(mockInputConverter.stringToUnsignedInteger(tNumberString));
       },
@@ -64,9 +64,13 @@ void main() {
         when(mockInputConverter.stringToUnsignedInteger(any))
             .thenReturn(Left(InvalidInputFailure()));
         //assert
+        final expected = [
+          Empty(),
+          Error(message: invalidInputMessage),
+        ];
         //add do not return any value, so we need to take it from another place
         //todo
-        //expectLater(bloc, emitsInOrder(Error(message: invalidInputMessage)))
+        expectLater(bloc, emitsInOrder(expected));
         //act
         bloc.add(GetTriviaForConcreteNumber(tNumberString));
       },
