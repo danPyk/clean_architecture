@@ -19,7 +19,7 @@ void main() {
       () async {
         // arrange
         final Map<String, dynamic> jsonMap =
-            json.decode(fixture('trivia.json'));
+            json.decode(fixture('trivia.json')) as Map<String, dynamic>;
         // act
         final result = NumberTriviaModel.fromJson(jsonMap);
         // assert
@@ -33,7 +33,7 @@ void main() {
       () async {
         // arrange
         final Map<String, dynamic> jsonMap =
-            json.decode(fixture('trivia_double.json'));
+            json.decode(fixture('trivia_double.json')) as Map<String, dynamic>;
         // act
         final result = NumberTriviaModel.fromJson(jsonMap);
         // assert

@@ -49,7 +49,7 @@ void main() {
         when(mockInputConverter.stringToUnsignedInteger(any))
             .thenReturn(const Right(tNumberParsed));
         //act
-        when(bloc.add(GetTriviaForConcreteNumber(tNumberString))).thenReturn(Right(true));
+        bloc.add(GetTriviaForConcreteNumber(tNumberString));
         await untilCalled(
             mockInputConverter.stringToUnsignedInteger(any));
         //assert
@@ -71,8 +71,6 @@ void main() {
         //add do not return any value, so we need to take it from another place
         //todo
         expectLater(bloc, emitsInOrder(expected));
-        //act
-        bloc.add(GetTriviaForConcreteNumber(tNumberString));
       },
     );
 
@@ -90,7 +88,7 @@ void main() {
            mockGetConcreteNumberTrivia(any));
         //assert
         //todo why Im using here Params
-        verify(mockGetConcreteNumberTrivia(const Params( tNumberParsed)));
+        verify(mockGetConcreteNumberTrivia(const Params(number: tNumberParsed)));
       },
     );
 

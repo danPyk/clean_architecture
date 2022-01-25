@@ -12,10 +12,10 @@ import 'get_concrete_number_trivia_test.mocks.dart';
 @GenerateMocks([NumberTriviaRepository])
 void main() {
   // initialization outside of setUp
-  final tNumber = 1;
+  const tNumber = 1;
   final tNumberTrivia = NumberTrivia(number: 1, text: 'test');
   final mockNumberTriviaRepository = MockNumberTriviaRepository();
-  final usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
+  final useCase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
 
   test(
     'should get trivia for the number from the repository',
@@ -26,7 +26,7 @@ void main() {
       when(mockNumberTriviaRepository.getConcreteNumberTrivia(any))
           .thenAnswer((_) async => Right(tNumberTrivia));
       // The "act" phase of the test.  I can omit 'call'
-      final result = await usecase.call(Params(tNumber));
+      final result = await useCase.call(Params(number: tNumber));
       // UseCase should simply return whatever was returned from the Repository
       expect(result, Right(tNumberTrivia));
       // Verify that the method has been called on the Repository

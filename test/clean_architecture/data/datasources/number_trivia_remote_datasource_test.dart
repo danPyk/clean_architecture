@@ -29,7 +29,7 @@ main() {
 
   group('getConcreteNumberTrivia', () {
     const tNumber = 1;
-     final tNumberTriviaModel =  NumberTriviaModel.fromJson(json.decode(fixture('trivia.json')));
+     final tNumberTriviaModel =  NumberTriviaModel.fromJson(json.decode(fixture('trivia.json')) as Map<String, dynamic>);
     test(
       'should perfrom GET request on URL with number being the endpoint and with application/json header',
       () async {
@@ -73,7 +73,7 @@ main() {
   });
 
   group('getRandomTrivia', () {
-    final tNumberTriviaModel =  NumberTriviaModel.fromJson(json.decode(fixture('trivia.json')));
+    final tNumberTriviaModel =  NumberTriviaModel.fromJson(json.decode(fixture('trivia.json')) as Map<String, dynamic>);
     test(
       'should perfrom GET request on URL with number being the endpoint and with application/json header',
           () async {

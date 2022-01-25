@@ -12,8 +12,7 @@ class GetConcreteNumberTrivia implements UseCase<NumberTrivia, Params> {
 //thanks to this we can call objecs like methods
   @override
   Future<Either<Failure, NumberTrivia>> call(Params params) async {
-   // return await repository.getConcreteNumberTrivia(params.number);
-    return await repository.getConcreteNumberTrivia(params.number);
+    return  repository.getConcreteNumberTrivia(params.number);
 
   }
 }
@@ -22,7 +21,7 @@ class GetConcreteNumberTrivia implements UseCase<NumberTrivia, Params> {
 class Params extends Equatable{
   final int number;
 
-   const Params(this.number);
+   const Params({required this.number});
 
   @override
   List<Object> get props => [number];

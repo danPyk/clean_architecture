@@ -22,25 +22,23 @@ class NumberTriviaRemoteDataSourceImpl extends NumberTriviaRemoteDataSource{
   NumberTriviaRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<NumberTriviaModel> getConcreteNumberTrivia(int number) async {
-
-   final response = await client.get(Uri.parse('http://numbersapi.com/$number'), headers: {
-      'Content-Type': 'application/json',
-    });
-   if (response.statusCode == 200) {
-     return NumberTriviaModel.fromJson(json.decode(response.body));
-   } else {
-     throw ServerException();
-   }
-  }
+  Future<NumberTriviaModel> getConcreteNumberTrivia(int number) =>
+      _getTriviaFromUrl('http://numbersapi.com/$number');
 
   @override
-  Future<NumberTriviaModel> getRandomNumberTrivia() async {
-    final response = await client.get(Uri.parse('http://numbersapi.com/random'), headers: {
-      'Content-Type': 'application/json',
-    });
+  Future<NumberTriviaModel> getRandomNumberTrivia() =>
+      _getTriviaFromUrl('http://numbersapi.com/random');
+
+  Future<NumberTriviaModel> _getTriviaFromUrl(String url) async {
+    final response = await client.get(
+      Uri.parse(url),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    );
+
     if (response.statusCode == 200) {
-      return NumberTriviaModel.fromJson(json.decode(response.body));
+      return NumberTriviaModel.fromJson(json.decode(response.body) as Map<String, dynamic>);
     } else {
       throw ServerException();
     }
